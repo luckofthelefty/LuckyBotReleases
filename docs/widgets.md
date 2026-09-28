@@ -2,17 +2,20 @@
 
 A widget is an always-on overlay that shows live numbers: goals, counters, totals, and labels. Widgets update in realtime with no other software, straight from your Twitch login.
 
+![Widget templates](images/overlays-template-widgets.png)
+
 ---
 
 ## Ready-made widgets
 
 The fastest start is the **Widget** tab in the New Overlay browser. It has prebuilt, fully styled widgets:
 
-- **Follower Goal** - total followers toward a target.
-- **Sub Tracker (Current Total)** - active subscriber count toward a goal.
-- **Daily Sub Goal** - subs this stream, resets when you go live.
+- **Follower Goal**: total followers toward a target.
+- **Sub Tracker (Current Total)**: active subscriber count toward a goal.
+- **Daily Sub Goal**: subs this stream, resets when you go live.
 - **Bits Tracker (Monthly Total)** and **Daily Bits Goal**.
-- **Goal Stack (Subs + Bits)** - three stacked goal lines in one overlay.
+- **Simple Tracker**: one number, one label.
+- **Goal Stack (Subs + Bits)**: three stacked goal lines in one overlay.
 
 Pick one, name it, copy the URL into OBS, and it works. Open it in the editor to restyle anything.
 
@@ -22,15 +25,17 @@ Pick one, name it, copy the URL into OBS, and it works. Open it in the editor to
 
 You do not need any setup to put a live number on screen. Add a text layer, click **Insert a variable** in its properties, and pick from the tabs:
 
-- **Session** - counts for the current stream (followers, subs, gifted subs, resubs, cheers, raids, raiders, tips).
-- **Totals** - all-time totals.
-- **Aggregates** - weekly, monthly, and rolling 30-day counts.
-- **Labels** - latest and recent contributors (latest follower, latest sub, and so on).
-- **Goals** - goal targets and progress from the Stats page.
-- **Leaderboards** - top cheerers and tippers.
-- **Chatbot Counters** - every counter from the [chat bot](chat-bot.md), like `{{counter_deaths}}`.
+- **Session**: counts for the current stream (followers, subs, gifted subs, resubs, cheers, raids, raiders, tips).
+- **Totals**: all-time totals.
+- **Aggregates**: weekly, monthly, and rolling 30-day counts.
+- **Labels**: latest and recent contributors (latest follower, latest sub, and so on).
+- **Goals**: goal targets and progress from the Stats page.
+- **Leaderboards**: top cheerers, tippers, and gifters.
+- **Chatbot Counters**: every counter from the [chatbot](chat-bot.md), like `{{counter_deaths}}`.
 
-The variable updates on the overlay the moment the underlying number changes. All of these numbers can be viewed and adjusted on the Stats page (see [Stream Tools](stream-tools.md)).
+Faster still: **+ Add > Label** opens a searchable list of every live label and drops a styled text box already bound to the one you click. Check **Marquee** for lists that should scroll, like recent followers or top gifters.
+
+The variable updates on the overlay the moment the underlying number changes. All of these numbers can be viewed and adjusted on the Stats page (see [Stream Tools](stream-tools.md#stats)).
 
 ---
 
@@ -49,9 +54,15 @@ Progress bar layers bind to a goal through the Counter dropdown in their propert
 
 ---
 
+## Testing a widget
+
+Widget editors have a **Simulate** menu instead of Test: Follow, Sub, Gift Sub, Gift Bomb, Resub, Cheer, Raid, and Go Live (which resets the session). A simulated event moves the widget for a few seconds so you can see it react, then the real numbers come back. Nothing is counted or saved.
+
+---
+
 ## Counter widgets
 
-Chat bot counters make great widgets. The quickest path is the **Create overlay** button next to a counter on the Chatbot page, which builds a styled counter widget in one click. See [Chat Bot](chat-bot.md).
+Chatbot counters make great widgets. The quickest path is the **Create overlay** button next to a counter on the Chatbot page, which builds a styled counter widget in one click. See [Chatbot](chat-bot.md#counters).
 
 ---
 

@@ -1,6 +1,8 @@
 # Commands
 
-How to build a chat command in LuckyBot: the fields every command has, the three response types, every variable available in a response, and the full list of steps available in a Multiple Actions command.
+How to build a chat command in LuckyBot: the fields every command has, the two response modes, every variable available in a response, and the full list of steps available in an Advanced actions command.
+
+![Command editor](images/chatbot-new-command.png)
 
 ---
 
@@ -9,30 +11,32 @@ How to build a chat command in LuckyBot: the fields every command has, the three
 Go to **Chatbot > Chat commands > User commands** and click **+ New command**. Every command has:
 
 - **Name** - the trigger word, typed after your prefix (`!` by default). No spaces.
+- **Location** - where the trigger has to appear: at the start of the message (the default), the whole message exactly, anywhere in the message, or a regular expression. **Requires the ! prefix** can be turned off for phrase triggers.
 - **Aliases** - extra trigger words that run the same command.
 - **User level** - the minimum permission to use it: Everyone, Subscriber, VIP, Moderator, or Broadcaster.
 - **User cooldown** and **global cooldown**, in seconds. User cooldown limits one viewer; global cooldown limits everyone combined.
 - **Stream state** - fire when you are online, offline, or both.
 - **Send replies as** - use the account chosen in Settings, or override it per command (your account or the bot account).
-- **Response** - one of Message, Sound, or Multiple actions, described below.
+- **Cost** - currency charged to run it, when Currency is on.
+- **Response** - Basic or Advanced actions, described below.
 
-A command can also be set to fire on Twitch events (gift subs, raids, cheers, follows) instead of, or alongside, its typed trigger, under **Event triggers**.
+A command can also be set to fire on Twitch events (gift subs, raids, cheers, follows, thon grants) instead of, or alongside, its typed trigger, under **Event triggers**. A minimum amount can gate event triggers, for example only cheers of 100 bits or more.
 
 ---
 
-## Response types
+## Response modes
 
-### Message
+### Basic
 
-A text reply. Type it directly, or build it from `$(...)` variables (see below). Multiple messages can be added; one is picked at random or in order each time the command runs.
+One action. Pick its type from the row of chips:
 
-### Sound
+- **Message** - a text reply. Type it directly, or build it from `$(...)` variables (see below). Multiple messages can be added; one is picked at random or in order each time the command runs.
+- **Sound** - plays a sound through a Sound Alerts overlay. Pick a file from the media library or paste a URL, set the volume, trim the start and end on a waveform, and choose which Sound Alerts overlay plays it (or any of them).
+- **Media**, **TTS**, **Announce**, **Shoutout**, **OBS**, **Currency**, **Command**, **File read**, **File write**, **Stop sounds**, **Variable**, **Fetch**, **Condition**, **Delay**, **Counter**, **JS**, **Spotify** - the same single action as the matching step below, without building a list.
 
-Plays a sound through a Sound Alerts overlay. Pick a file from the media library or paste a URL, set the volume, trim the start and end on a waveform, and choose which Sound Alerts overlay plays it (or any of them).
+### Advanced actions
 
-### Multiple actions
-
-A step builder. Steps run top to bottom, in order, and each one can read variables set by an earlier step. Add as many as you like.
+A step builder. Steps run top to bottom, in order, and each one can read variables set by an earlier step. Add as many as you like. The step picker is searchable and grouped: Chat, Sound and media, Apps and devices, Viewers and currency, Flow, and Data and code.
 
 ---
 
@@ -70,7 +74,7 @@ An unrecognized `$(...)` is left in the response untouched rather than removed, 
 
 ---
 
-## Multiple actions: step reference
+## Advanced actions: step reference
 
 Each step's own fields can also use `$(...)` variables, including ones set by earlier steps in the same run.
 
@@ -90,8 +94,8 @@ Each step's own fields can also use `$(...)` variables, including ones set by ea
 | **Enable/disable command** | Turns another command on, off, or toggles it. |
 | **Enable/disable timer** | Turns a timer on, off, or toggles it. |
 | **Reset timer countdown** | Restarts a timer's interval from now, without changing its enabled state. |
-| **Run custom script** | Runs one of your uploaded Python scripts (see [Chat Bot: Scripts](chat-bot.md#scripts)). Arguments and the trigger context are passed in; whatever the script prints is stored in a variable. |
-| **Viewer queue** | Opens, closes, toggles, clears, or advances a viewer queue, or joins the triggering viewer to one. See [Chat Bot: Queues](chat-bot.md#queues). |
+| **Run custom script** | Runs one of your uploaded Python scripts (see [Chatbot: Scripts](chat-bot.md#scripts)). Arguments and the trigger context are passed in; whatever the script prints is stored in a variable. |
+| **Viewer queue** | Opens, closes, toggles, clears, or advances a viewer queue, or joins the triggering viewer to one. See [Chatbot: Queues](chat-bot.md#queues). |
 | **Spotify** | Play, pause, skip to the next or previous track, queue a fixed track by link, or turn `$(args)` into a song request. A song request sets `$(track)`, `$(artist)`, and `$(trackUri)` on success for later steps. Requires Spotify to be connected under Settings > Connections. |
 | **Shoutout** | Runs a Twitch shoutout for a channel name (or `$(touser)`). |
 | **Run JavaScript** | Runs a short script with `user`, `args`, `argString`, `channel`, `count`, and `vars` available. Whatever it returns is stored in a variable. |
@@ -103,7 +107,9 @@ Each step's own fields can also use `$(...)` variables, including ones set by ea
 | **Read from file** | Reads a random line, a specific line, the whole file, or checks whether a file exists, storing the result in a variable. |
 | **Write to file** | Appends a line to a file, or overwrites it, with text that can use `$(...)` variables. |
 | **OBS control** | Shows/hides a source, switches a scene, turns a filter on or off, or mutes an input. A shown source can automatically revert after a chosen number of seconds. |
-| **Lumia Stream** | Triggers a Lumia command, sets a light color, fires a Lumia alert, or returns Lumia to its default state. |
+| **Lumia Stream** | Triggers a Lumia command, sets a light color (a hex value, a color name, or `$(userInput)` such as "red 40"), fires a Lumia alert, or returns Lumia to its default state. A color can play once, hold as a state for N minutes, or run as a temporary cycle. Requires Lumia Stream under Settings > Connections. |
+| **Press key** | Sends a keystroke to the focused window: press, hold for a moment, key down, key up, toggle, or block a key temporarily. Made for hotkey-only apps such as a ReShade toggle; the app must be focused. |
+| **Repeat group** | Runs a nested list of steps for a number of seconds or a number of cycles, with a pause between cycles. Pair it with Press key to tap a key repeatedly. |
 
 ---
 
@@ -113,6 +119,6 @@ Each step's own fields can also use `$(...)` variables, including ones set by ea
 
 **A greeting with a random line.** Response type Message with several message options added, one picked at random each time, for example `Welcome, $(touser)!` and `Hey there, $(touser).`.
 
-**A gamble command.** Multiple actions: Condition checking `$(args)` is not empty (else stop with "Usage: !gamble <amount>"), Give currency to subtract the bet, a Condition on `$(random 1-100)` to decide win or lose, then a Send message reporting the result and a Give currency step paying out on a win.
+**A gamble command.** Advanced actions: Condition checking `$(args)` is not empty (else stop with "Usage: !gamble <amount>"), Give currency to subtract the bet, a Condition on `$(random 1-100)` to decide win or lose, then a Send message reporting the result and a Give currency step paying out on a win.
 
-**A lookup command that calls an API.** Multiple actions: Fetch URL with a JSON path pulling one field into a variable, then Send message using `$(that_variable)` in the reply.
+**A lookup command that calls an API.** Advanced actions: Fetch URL with a JSON path pulling one field into a variable, then Send message using `$(that_variable)` in the reply.
