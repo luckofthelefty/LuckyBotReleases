@@ -69,6 +69,10 @@ The Chat Overlay page (Chat settings > Popouts & Overlays > Chat overlay) styles
 
 The live preview is the real overlay running a demo chat. Click **Copy OBS browser source URL** and add it in OBS as a Browser Source; 480 x 800 is a good starting size.
 
+### More than one chat overlay
+
+Different scenes can use different fonts and looks. The **Editing overlay** bar at the top of the page lists your chat overlays, starting with **Default**. Click **New overlay**, give it a name (for example "Just Chatting scene"), and it starts as a copy of the overlay you were editing. Every overlay has its own OBS URL: pick it in the bar, style it, then **Copy OBS browser source URL** and paste that into the browser source for that scene. Rename and Delete apply to named overlays; Default always exists, and any overlay URL copied before this feature existed keeps showing the Default style. Event cards and the Events tab filters are shared by all overlays.
+
 ---
 
 ## Chat settings
