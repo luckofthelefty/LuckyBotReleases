@@ -57,13 +57,15 @@ The chip's tooltip shows the rules in force.
 
 ## Sound and media per reaction
 
-Audio, video, and GIF layers can start when a reaction plays. Select the layer while a reaction chip is active and the ANIMATION bar shows **Play (layer) on this reaction** with an offset in milliseconds and **stop when it ends**. The layer restarts that many milliseconds after the reaction begins (after the entry blend), at its trim start and volume. With the stop option, it pauses when the reaction ends or is cut. The layer's idle behavior (play once on load, or loop) is unchanged.
+Audio, video, and GIF layers can start when a reaction plays. Select the layer and open its **Animation** tab: the **Play on reaction** section lists every reaction with a checkbox, an offset in milliseconds, and **stop when the reaction ends**. The layer restarts that many milliseconds after the reaction begins (after the entry blend), at its trim start and volume. With the stop option, it pauses when the reaction ends or is cut. The layer's idle behavior (play once on load, or loop) is unchanged.
 
 **Test reaction** in the editor plays the armed audio layers too, so the timing can be heard.
 
 ---
 
-## Handoff settings
+## Settings
+
+The **Settings** button in the ANIMATION bar holds the overlay-wide options:
 
 - **Interrupt idle**: off by default. Off, an event that lands mid-idle waits for the loop to finish its lap, so the reaction starts from the settled pose. On, the reaction starts right away.
 - **Transition (ms)**: the blend into and out of every reaction (500 by default, 0 for a hard cut). The idle animation pauses during the reaction and resumes from the same point afterwards, so the character never jumps.
