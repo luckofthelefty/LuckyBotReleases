@@ -64,8 +64,9 @@ In a layer's properties, **Attach to** makes it follow another layer's movement 
 
 - Click a box to select it, drag to move, use the handles to resize.
 - Arrow keys nudge 1px; Shift + arrows nudge 10px.
-- Ctrl-click or Shift-click to select multiple boxes and move them together. Alignment and spacing controls appear for a multi-selection.
-- Right-click a box for Bring to Front, Send to Back, Duplicate, and Delete.
+- Shift-click to select multiple boxes and move them together. With a selection, the Layers panel shows Group, Ungroup and Duplicate, plus an Arrange block: align to the selection or the canvas, and Space X / Space Y for equal gaps between three or more objects.
+- Right-click a box (or a row in the Layers panel) for Duplicate, Hide, Lock, Bring to Front, Send to Back, and Delete.
+- K toggles the keyframe panel; Ctrl+S saves.
 - Ctrl+Z to undo, Ctrl+Y or Ctrl+Shift+Z to redo. Rapid moves merge into a single undo step.
 
 ---
@@ -77,7 +78,7 @@ The properties panel has four tabs: **Content**, **Layout**, **Animation**, and 
 ### Layout
 
 - Position (X, Y), size, and z-order.
-- Transform: rotation, plus the attachment and rotation pivot controls described above.
+- Transform: rotation, flip, and skew, followed by the attachment and rotation pivot controls described above.
 - **Visibility Condition**: show this layer only when a condition matches the incoming event. For example, a crown image only when `tier == 3000`.
 
 ### Animation
@@ -99,7 +100,7 @@ The properties panel has four tabs: **Content**, **Layout**, **Animation**, and 
 - **Text Shadow**: offset, blur, and color.
 - **Text Outline**: a letter stroke with width and color, for readable text on any background.
 - **Box Border**: width, style, radius, and color.
-- **Text Animation**: typewriter, marquee, and other text reveals.
+- **Text Animation** lives in the Animation tab: marquee plus bounce, pulse, wave, wiggle and other per-letter effects, with an option to animate only the variable portions.
 
 ### Media layers
 
