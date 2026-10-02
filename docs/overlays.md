@@ -4,7 +4,7 @@ An overlay is a browser page that runs inside OBS as a Browser Source. Each over
 
 ![Overlays page](images/overlays.png)
 
----
+
 
 ## Creating an overlay
 
@@ -129,3 +129,12 @@ Each time you open the Overlays page, LuckyBot checks your overlays for broken m
 Every overlay page LuckyBot serves carries a Content Security Policy: only script LuckyBot wrote into the page may run. That closes the door on an attack where a crafted chat message becomes code inside an overlay that inserts viewer text as HTML.
 
 If a page ever runs script from outside the policy, a **Security notice** badge appears on that overlay's card and a banner appears on Home. Click either for details: what tried to run, where, how many times, and when. If you did not add that code yourself and the overlay shows viewer text, treat it as an attack: disable the overlay, remove the code that inserts viewer text as HTML, and keep OBS on its latest version. If it is your own advanced code or an imported widget that uses inline handlers such as `onclick`, it is safe to **Dismiss notice**. The policy currently reports without blocking; LuckyBot's own runtimes never insert viewer text as HTML.
+
+---
+
+## Doubled alerts and the sources badge
+
+If the same overlay URL is open in more than one place at once, every alert and sound on it plays once per copy, which you hear as doubled audio. The usual causes are a second OBS browser source pointing at the same URL (often left behind in another scene after re-creating a source), or the same overlay in two scenes without **Shutdown source when not visible**.
+
+LuckyBot counts the pages connected to each overlay. When one is open twice or more, a **Doubled alerts** banner appears on Home and on the Overlays page, and the overlay's card shows a **2 sources connected** badge. The fix is in OBS: find the extra source (check every scene, including nested scenes) and delete it, or tick Shutdown source when not visible on each copy so only the visible one runs. The badge clears on its own within a few seconds of the extra page closing.
+
