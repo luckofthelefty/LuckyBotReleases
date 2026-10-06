@@ -132,9 +132,8 @@ If a page ever runs script from outside the policy, a **Security notice** badge 
 
 ---
 
-## Doubled alerts and the sources badge
+## Overlay open twice
 
-If the same overlay URL is open in more than one place at once, every alert and sound on it plays once per copy, which you hear as doubled audio. The usual causes are a second OBS browser source pointing at the same URL (often left behind in another scene after re-creating a source), or the same overlay in two scenes without **Shutdown source when not visible**.
+When the same overlay URL is open in more than one place at once, LuckyBot shows an **Overlay open twice** banner on Home and on the Overlays page, and the overlay's card shows a **2 sources connected** badge. Each alert still plays only once in the queue, but every copy plays its sound, so two unmuted copies are heard twice.
 
-LuckyBot counts the pages connected to each overlay. When one is open twice or more, a **Doubled alerts** banner appears on Home and on the Overlays page, and the overlay's card shows a **2 sources connected** badge. The fix is in OBS: find the extra source (check every scene, including nested scenes) and delete it, or tick Shutdown source when not visible on each copy so only the visible one runs. The badge clears on its own within a few seconds of the extra page closing.
-
+A second copy on purpose, such as one on an Aitum Vertical canvas, is fine: tick **Control audio via OBS** on that copy and mute it in the OBS mixer. If the copy is a leftover (often in another scene after re-creating a source), delete it. The badge clears within a few seconds of the extra page closing.
