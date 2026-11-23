@@ -10,7 +10,9 @@ A reactive overlay is an always-on canvas that reacts to events. An idle animati
 
 Click **+ New Overlay**, open the **Reactive** tab, pick **Reactive Overlay**, name it, and click **Create**. The overlay has a single canvas named **Canvas**; click it to open the editor.
 
-Build the character from layers exactly as in the [Visual Editor](visual-editor.md): images, shapes, text, groups, and attachments all work. Paths and Follow path are especially useful here for movement.
+Build the character from layers exactly as in the [Visual Editor](visual-editor.md): images, shapes, text, groups, and attachments all work. Paths and Follow path are especially useful here for movement. A [Visualizer](visual-editor.md#visualizer) layer can sit beside the character and move with your sound. **Tour** in the top bar walks through the editor.
+
+Want a character that talks when you talk? An [Avatar overlay](avatar-overlays.md) is a reactive overlay with a voice: everything on this page works there too.
 
 ---
 

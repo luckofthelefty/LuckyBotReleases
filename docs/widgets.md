@@ -41,14 +41,14 @@ The variable updates on the overlay the moment the underlying number changes. Al
 
 ## Goals and progress bars
 
-To track a count toward a target with a progress bar, open **Advanced Widget Setup** from the editor's top bar and add a goal. Each goal reads as a sentence:
+To track a count toward a target with a progress bar, open **More > Advanced widget setup** in the editor's top bar and add a goal. Each goal reads as a sentence:
 
 > Track [Subscribers] [this stream] toward a goal of [50]
 
 - **Metrics**: Followers, Subscribers, Bits, Raids, Raiders.
 - **Periods**: This stream, Weekly, Monthly, Every 30 days, All-time.
 - The goal's variable name is generated automatically (for example `streamSubs`), with `{{streamSubs}}`, `{{streamSubsTarget}}`, and `{{streamSubsPct}}` tokens. A Rename button is there if you want your own name.
-- **+ Add label & bar to canvas** drops a ready-made styled label and a bound progress bar in one click.
+- **+ Add label & bar to canvas** drops a ready-made styled label and a bound progress bar in one click. A goal with no target offers **+ Add label to canvas** instead.
 
 Progress bar layers bind to a goal through the Counter dropdown in their properties, and fill as the count approaches the target.
 
@@ -68,4 +68,4 @@ Chatbot counters make great widgets. The quickest path is the **Create overlay**
 
 ## Streamer.bot-driven widgets
 
-For advanced setups, a widget can be driven by Streamer.bot instead of native tracking: an action or Custom Event supplies the widget's variables, seeded on load, updated live, or both. The toggle is at the bottom of Advanced Widget Setup. Most widgets never need this.
+For advanced setups, a widget can be driven by Streamer.bot instead of native tracking: an action or Custom Event supplies the widget's variables, seeded on load, updated live, or both. The toggle is at the bottom of Advanced widget setup. Most widgets never need this.

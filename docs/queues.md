@@ -3,26 +3,27 @@
 Alert queues control how alerts are played back. Without a queue, all alerts fire the moment their event comes in, which can cause them to stack or overlap. Queues let you manage the timing.
 
 ![Alert Queues page](images/alert-queues.png)
+<!-- shot: alert-queues.png | /queues | the queue cards with the One at a time / All at once switch, Rename and Delete -->
 
 ---
 
 ## Queue types
 
-**Blocking**: alerts play one at a time. Each alert waits for the previous one to finish. Use this when alerts should play cleanly in sequence.
+**One at a time** (blocking): each alert waits for the one before it to finish. Use this when alerts should play cleanly in sequence.
 
-**Non-blocking**: alerts play immediately regardless of what else is playing. Use this for sound effects or anything that does not need to wait.
+**All at once** (non-blocking): alerts play the moment they arrive, whatever else is playing. Use this for sound effects or anything that does not need to wait.
 
 ---
 
 ## Creating a queue
 
-Go to **Alert Queues** in the sidebar and click **+ New Queue**. Give it a name. New queues start as blocking; click the badge on the card to switch type.
+Go to **Alert Queues** in the sidebar and click **+ New Queue**. Give it a name and click **Create**. New queues start as **One at a time**; click **All at once** on the card to switch.
 
 ---
 
 ## Assigning overlays to a queue
 
-Queues are assigned per overlay. On the Overlays page, each basic or advanced overlay card has a queue dropdown. Widgets, static, and reactive overlays do not queue, so the picker does not appear for them.
+Queues are assigned per overlay. On the Overlays page, each basic or advanced overlay card has a queue dropdown. Widget, static, reactive, and avatar overlays do not queue, so the picker does not appear for them.
 
 If an overlay has no queue assigned, its alerts play immediately without queuing.
 
@@ -36,11 +37,11 @@ Within a blocking queue, each alert chooses how it joins in its Alert Settings: 
 
 ## Queue card controls
 
-Each queue card shows the name, the blocking or non-blocking badge, and the assigned overlays.
+Each queue card shows the name, how its alerts play, and the assigned overlays.
 
-- **Toggle blocking/non-blocking**: click the badge.
-- **Rename**: click the pencil icon.
-- **Delete**: click the trash icon and confirm. Overlays using the deleted queue fall back to no queue.
+- **One at a time / All at once**: click either to switch how the queue plays alerts.
+- **Rename**: click **Rename** and type the new name.
+- **Delete**: click **Delete**, then **Delete** again in the pop-up that names the queue. Overlays using the deleted queue fall back to no queue.
 
 ---
 

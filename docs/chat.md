@@ -10,13 +10,28 @@ The Chat page is a full Twitch chat client: read and send chat, run moderation, 
 
 Messages show badges, emotes (including BetterTTV, FrankerFaceZ, and 7TV), animated cheermotes, replies, and pronouns. First-time chatters and first messages of the stream can be highlighted, @-mentions of you can be colored, and non-English messages can show an English translation underneath.
 
+New 7TV, BetterTTV, and FrankerFaceZ emotes show up on their own: every chat window checks for new ones every 5 minutes. When a channel emote and a global emote share a name, the channel's own emote wins.
+
+Names in another script (Chinese, Korean, Japanese, Cyrillic, and so on) show the way Twitch shows them, with the login in parentheses, for example "小明 (xiaoming88)". That applies to chat messages, event cards, gift recipients, and the activity feed.
+
 Power-Up message effects and gigantified emotes render like native Twitch. Deleted and banned messages are struck through or removed, based on your setting.
 
-Hover a message for quick actions: copy, reply, pin, shoutout, and moderation actions. Click a username for the viewer card, which shows their history in your chat and their watch time.
+Hover a message for quick actions: copy, reply, pin, shoutout, and moderation actions. Hover a username for the mod menu: **Delete message**, **Timeout** (with **Purge (1s)** and set lengths), **Warn**, and **Ban**. Ban asks for a second click ("Click again to ban ...") before it goes through. Click a username for the viewer card, which shows their history in your chat and their watch time.
 
 During a shared chat session, a banner at the top shows the participating channels, and messages from other channels are tagged and shown with the source streamer's picture. With TikTok LIVE connected, TikTok chat appears in the same view tagged TT.
 
-Event cards for subs, gifts, bits, raids, follows, channel points, watch streaks, and mod anniversaries appear inline. Repeated TikTok "shared the stream" cards collapse into one card with a count.
+Event cards for subs, gifts, bits, raids, follows, channel points, watch streaks, and mod anniversaries appear inline. A mod anniversary card shows the moderator's message with its emotes when they share one. Repeated TikTok "shared the stream" cards collapse into one card with a count.
+
+### 7TV name paints
+
+7TV users can pick custom name colors: gradients, image paints, and shadows. LuckyBot can show them, but it is off until you turn it on, because each chatter costs a lookup with 7TV.
+
+- **Chat, popouts, and the OBS dock**: open chat settings and tick **7TV name paints** under Emote Extensions.
+- **OBS chat overlay**: on the Chat Overlay page, tick **Show 7TV name paints**. The overlay in OBS picks it up without a new URL.
+
+Chatters without a paint keep their Twitch color. On the OBS overlay a painted name gets a dark edge so it stays readable over gameplay.
+
+<!-- shot: chat-settings-display.png | /chat | open chat settings (gear), Display tab: Emote Extensions with the 7TV name paints tick and Refresh emotes now; crop to the settings window so no chat lines show -->
 
 ---
 
@@ -61,9 +76,11 @@ Each moderated tab is a full chat view with mod actions, pinned messages, channe
 The Chat Overlay page (Chat settings > Popouts & Overlays > Chat overlay) styles the chat your viewers see on stream. The running OBS source restyles itself within a few seconds of any change, no refresh needed, and your own chat windows are unaffected.
 
 ![Chat overlay setup](images/chat-overlay-setup.png)
+<!-- shot: chat-overlay-setup.png | /chat-overlay-setup | the Chat Overlay page with the Editing overlay bar and the Look section showing Show 7TV name paints; the preview runs demo chat -->
+
 
 - **Text**: size, font (a list of Google Fonts or any custom Google Font name), bold, all caps, message on its own line, hide usernames.
-- **Look**: outline and shadow strength, emote size, line spacing, which badges show, profile pictures, shared chat avatars, chat GIFs, timestamps, and dimming of shared chat and raid messages.
+- **Look**: outline and shadow strength, emote size, line spacing, which badges show, profile pictures, shared chat avatars, chat GIFs, 7TV name paints, timestamps, and dimming of shared chat and raid messages.
 - **Motion**: the new-message animation (slide, fade, pop), hide after N seconds, newest at the top or bottom, and a transparent, dimmed, or dark background.
 - **Filters**: hide known chat bots, hide `!commands`, and hide specific users. Event cards follow the Events tab of your chat settings.
 
@@ -77,9 +94,9 @@ Different scenes can use different fonts and looks. The **Editing overlay** bar 
 
 ## Chat settings
 
-The settings menu has five tabs:
+The settings menu has five tabs (Popouts & Overlays is in the desktop app only):
 
-- **Display**: emote extensions, text size, badges, pronouns, timestamps, translation, first-time and mention highlights, trusted links.
+- **Display**: emote extensions (BetterTTV, FrankerFaceZ, 7TV, and 7TV name paints), text size, badges, pronouns, timestamps, translation, first-time and mention highlights, trusted links. **Refresh emotes now** reloads 7TV, BetterTTV, and FrankerFaceZ emotes in every open chat window and the OBS chat overlay at once, which is handy right after you add an emote.
 - **Events**: which event cards appear in chat per channel (Subs / Gifts, Bits / Cheers, Raids, Follows, Announcements, Super Chats, Channel Points, Other) and their colors, plus an option to expand gift-sub recipients into individual lines.
 - **Moderation**: whether deleted messages are struck through or removed entirely.
 - **Sending**: send as your account or a bot account.

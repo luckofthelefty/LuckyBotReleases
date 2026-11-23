@@ -1,6 +1,6 @@
 # Media Library
 
-The media library is where you manage the images, videos, GIFs, and audio files used in your alerts and overlays.
+The media library (**Media** in the sidebar) is where you manage the images, videos, GIFs, and audio files used in your alerts and overlays.
 
 ![Media library](images/media-page.png)
 
@@ -8,7 +8,7 @@ The media library is where you manage the images, videos, GIFs, and audio files 
 
 ## Adding files
 
-Click **Add Files** to open a file picker, or drag and drop files directly onto the library grid. Files are stored by the local server, so overlays can load them in OBS.
+Click **Add Files** to open a file picker, or drag and drop files directly onto the library grid. Files are stored by the local server, so overlays can load them in OBS. An overlay pulls every alert sound and video it uses into the browser cache when it loads, so the first alert of the stream starts its sound as fast as the tenth.
 
 ---
 

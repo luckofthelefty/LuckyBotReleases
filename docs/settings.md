@@ -3,16 +3,19 @@
 The Settings page has four tabs: **Connections**, **Audio**, **Appearance**, and **System**. System only appears in the desktop app. LuckyBot remembers the tab you were on.
 
 ![Settings, Connections tab](images/settings.png)
+<!-- shot: settings.png | /settings | Connections tab showing the grid of connection cards with status and what each adds -->
 
 ---
 
 ## Connections
 
-Connections is a row of sub-tabs, one per service: Streamer.bot, OBS Studio, Lumia Stream, Spotify, LuckyBot Cloud, StreamElements, TikTok LIVE, TreatStream, and Twitch auth. None of them is required. LuckyBot talks to Twitch on its own with your login.
+Connections opens on a grid of cards, one per service: Twitch, LuckyBot Cloud, Streamer.bot, OBS Studio, Lumia Stream, Home Assistant, Spotify, TikTok LIVE, TreatStream, and StreamElements. Each card shows its status (for example Connected, Set up, Free account, or Not set up) and chips for what connecting it adds. Click a card to open that service's settings below the grid.
+
+Only Twitch is required. LuckyBot talks to Twitch on its own with your login. The same statuses show in the strip at the top of Home.
 
 ### Streamer.bot
 
-Optional. Connecting a local Streamer.bot instance adds YouTube events and anything else your Streamer.bot connects to.
+Optional. Connecting a local Streamer.bot instance adds YouTube and Kick events and anything else your Streamer.bot connects to.
 
 - **WebSocket URL**: the address LuckyBot connects to. The default is `ws://127.0.0.1:8080`. In Streamer.bot, enable the server under Servers/Clients > WebSocket Server.
 - **Password**: only needed to send chat messages when Streamer.bot's WebSocket authentication is enabled.
@@ -34,7 +37,7 @@ The status line shows Disconnected, Connecting, or Connected. A wrong password r
 
 ### Lumia Stream
 
-Control your Lumia Stream lights from command, timer, and walk on steps: trigger Lumia commands, set colors, hold a state for minutes, and queue temporary alert cycles.
+Control your Lumia Stream lights from command, timer, and walk on steps: trigger Lumia commands, set colors, hold a state for minutes, and queue temporary alert cycles. Advanced overlays can control the same lights through the same queue (see [Advanced Editor](advanced-editor.md)).
 
 In Lumia, open Settings, scroll to the API section, turn the API on, and copy the token.
 
@@ -45,6 +48,20 @@ In Lumia, open Settings, scroll to the API section, turn the API on, and copy th
 Click **Save**, then **Test connection**. A working setup reports the Lumia version it reached.
 
 ![Lumia Stream connection](images/settings-lumia.png)
+
+### Home Assistant
+
+Connect your own Home Assistant so commands, rewards, and stream events can control lights, scenes, and other devices. LuckyBot talks to it directly on your network.
+
+1. Type the **Address** you open Home Assistant at in a browser (for example `http://homeassistant.local:8123`), or click **Find on my network** and pick it from the list.
+2. Click **Sign in with Home Assistant**. Home Assistant's login page opens in your browser; log in and approve LuckyBot, and the page updates by itself. Nothing to copy or paste.
+3. Or click **Or paste a long-lived access token**: in Home Assistant, open your profile, then the Security tab, scroll to Long-lived access tokens, click Create token, and paste it here. Click **Save and test**.
+
+The status line says which Home Assistant it reached and its version. **Test** checks again, **Sign in again** renews a sign-in, and **Disconnect** removes the saved token. The token is stored on this PC and never shown again.
+
+See [Home Assistant](home-assistant.md) for the Home Assistant page and the command step.
+
+<!-- shot: settings-homeassistant.png | /settings | Connections, Home Assistant card: the Address field with Find on my network, Sign in with Home Assistant, and the token link; mask the address if it is a real LAN host name -->
 
 ### Spotify
 
@@ -58,13 +75,17 @@ Once connected, **Test** reports what is playing, and **Disconnect** removes the
 
 ### LuckyBot Cloud
 
-Optional. [LuckyBot Cloud](https://cloud.luckybot.app) relays events from services that only speak webhooks or cloud sockets, such as Ko-fi, Streamlabs, StreamElements, Fourthwall, and custom WebSocket feeds, and includes a mobile companion for watching chat and events from your phone. It needs a subscription.
+Optional. [LuckyBot Cloud](https://cloud.luckybot.app) has free and paid accounts.
 
-Paste your **Connection token** from cloud.luckybot.app, click **Validate** to confirm it and see which account it belongs to, then **Save & Connect**. Use the same Twitch account in LuckyBot and at cloud.luckybot.app, or the token is rejected.
+- **Free**: install overlays shared with a link, and use chat and your activity feed in any browser.
+- **Subscription**: adds Ko-fi, Fourthwall, Streamlabs, and StreamElements events without Streamer.bot, the remote Deck, remote OBS control, and sharing your own overlays.
+
+Paste your **Connection token** from cloud.luckybot.app, click **Validate** to confirm it and see which account it belongs to (a free account says "(free account)"), then **Save & Connect**. Use the same Twitch account in LuckyBot and at cloud.luckybot.app, or the token is rejected.
 
 ![LuckyBot Cloud connection](images/settings-cloud.png)
+<!-- shot: settings-cloud.png | /settings | Connections, LuckyBot Cloud card: the intro naming free and paid, and the status line (free account or connected) -->
 
-When configured, the status line shows Connected, Connecting, Reconnecting, or an error such as "Subscription expired." **Disconnect** removes the saved token.
+When configured, the status line shows Connected, Connecting, Reconnecting, or an error. A free account is a normal state: the line reads "Linked to a free account. You can install overlays shared with a link." with a **Subscribe on Ko-fi** link, and LuckyBot asks the cloud again every 30 minutes, so a new subscription takes effect without restarting. **Check again** asks right away. **Disconnect** removes the saved token.
 
 ### StreamElements
 
@@ -93,7 +114,7 @@ TreatStream needs an app of your own, the same way Spotify does. Open your Treat
 
 Once connected: **Send a test treat** fires a treat through the same path a real one takes (check the Activity feed), **Reconnect** re-opens the live socket, and **Disconnect** removes the connection.
 
-### Twitch auth
+### Twitch
 
 LuckyBot uses your Twitch login for events, chat, and channel actions. Tokens refresh automatically every 15 minutes.
 
@@ -125,7 +146,7 @@ Click **Save** to apply changes, or **Test** to hear a short sample with the cur
 
 ## Appearance
 
-Click a theme card to change the dashboard color theme: Ember (default), Violet, Ocean, Forest, Rose, or Slate. The change applies immediately.
+Click a theme card to change the dashboard color theme: Ember (default), Violet, Ocean, Forest, Rose, or Slate. The change applies immediately, and every color in the dashboard follows it.
 
 ![Appearance themes](images/settings-appearance.png)
 
@@ -147,7 +168,7 @@ Chat windows can also open at startup per channel, under Chat > settings > Popou
 ### App
 
 - **Open data folder**: opens the folder that holds the database, logs, and backups.
-- **Check for updates**: checks now. The app also checks on startup.
+- **Check for updates**: checks now. The app also checks on startup. If a check fails, a short message says why, and the banner at the top of the window has a **Download manually** link to the releases page. LuckyBot retries on its own a little later.
 - **Download updates automatically**: new versions download in the background and install the next time you close LuckyBot. A banner still offers to restart sooner.
 - **Export all overlays**: saves every overlay as a separate `.beacon` file.
 
@@ -177,3 +198,4 @@ Each backup lists the app version and time it was taken. **Restore** rolls back 
 - **Workspace switcher**: appears under the logo when more than one workspace is available to you, for example one shared by another streamer. Switching reloads the dashboard for that workspace.
 - **Streamer.bot pill**: green when connected, red "Streamer.bot off" otherwise. Click it to open this page.
 - **Report a bug or request a feature**: opens a short form. Bug reports can include your recent logs (no passwords or tokens) and a screenshot, and go straight to the developer.
+- **Support on Ko-fi**: opens LuckyBot's Ko-fi page.

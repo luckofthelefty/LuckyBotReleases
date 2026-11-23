@@ -3,8 +3,13 @@
 LuckyBot has a built-in chatbot: custom commands, timers, walk ons, counters, quotes, viewer queues, a currency with a shop and watch time, chat games and custom minigames, Spotify song requests, custom scripts, spam filters, and banned words. It runs server-side from your account or a dedicated bot account, works with no other software, and keeps running with the dashboard closed.
 
 ![Chatbot page](images/chatbot-commands.png)
+<!-- shot: chatbot-commands.png | /chatbot | Chat commands tab, User commands, showing several command cards with their When / Only if / Do chips -->
 
 The Chatbot page has fourteen tabs: **Chat commands**, **Timers**, **Scheduled**, **Walk Ons**, **Counters**, **Quotes**, **Queues**, **Currency**, **Games**, **Song Requests**, **Scripts**, **Spam filters**, **Banned words**, and **Settings**. Features that another bot commonly handles (event triggers, walk ons, currency, games, minigames, banned words) start off, so nothing replies twice next to Streamer.bot or StreamElements.
+
+Commands, timers, and walk ons are listed as cards that read the same way: **When** (what starts it), **Only if** (who can use it, cooldowns, cost, live or offline), and **Do** (what it does). A cooldown chip says who waits, for example "30s cooldown per viewer" or "1m cooldown" for all of chat. A command card also has its on/off switch, **Test**, and **Edit**. Edit opens the editor in a pop-up. The pop-up closes only with Cancel, Save, or its X, so a stray click outside it keeps your edits.
+
+Deleting anything saved on this page (a command, timer, counter, walk on, quote, banned word, viewer queue, script, shop item, currency, a currency's balances, or minigame) opens one pop-up that names what you are deleting and asks "Are you sure you want to delete it?" with **Cancel** and **Delete**. When something else goes with it, the pop-up says so; deleting a counter also deletes its commands.
 
 ---
 
@@ -36,24 +41,37 @@ Commands live under two sub-tabs: **User commands** (yours) and **Default comman
 Two switches sit above the list. **Chat commands** turns the whole bot on and off. **Event triggers** lets commands fire on Twitch events (gift subs, raids, cheers, follows, and more) instead of typed text; it is off by default.
 
 ![Command editor](images/chatbot-new-command.png)
+<!-- shot: chatbot-new-command.png | /chatbot | + New command, Blueprint view: When node wired to two or three steps, the side panel showing a selected step -->
+
+A command opens as a **Blueprint**: a graph where When is the first box and every step is a box wired after it. **Advanced (form)** at the top of the editor switches to the form, with When, Only if, and Do as sections. Both edit the same command, and LuckyBot remembers which one you used last.
 
 Each command has:
 
-- A name and optional aliases.
+- A name and optional aliases, or **Events only** for a command that nothing typed in chat starts.
 - A **Location**: the trigger word at the start of the message, an exact match, anywhere in the message, or a regular expression.
 - A **user level**: Everyone, Subscriber, VIP, Moderator, or Broadcaster.
 - **User** and **global cooldowns** in seconds.
 - A stream state: fire when online, offline, or both.
 - A **cost** in currency, if Currency is on.
-- A **response**: **Basic** (a message with insertable `$(variables)`, a sound, media, TTS, an announcement, a shoutout, an OBS action, and so on) or **Advanced actions**, a step builder that runs top to bottom.
+- What it does: steps in the Blueprint, or in the form a **Basic** response (a message with insertable `$(variables)`, a sound, media, TTS, an announcement, a shoutout, an OBS action, a Home Assistant action, and so on) or **Advanced actions**, a step list that runs top to bottom.
 
-See [Commands](commands.md) for the full list of variables and every step, with examples.
+**Save** works with no name filled in: LuckyBot asks for the name, then saves. **Test** runs the draft right away without saving it.
+
+See [Commands](commands.md) for the Blueprint, the full list of variables, and every step, with examples.
 
 ---
 
 ## Timers
 
-Timed messages that post on an interval: a name, one or more messages, and separate intervals for when you are live and offline. Messages support the same `$(...)` variables.
+Timers post on an interval, with separate intervals for when you are live and offline. **Only if** can hold a timer back until chat is active (a minimum number of chat lines in the last 5 minutes) or to certain stream title keywords or categories.
+
+Under **Do**, a timer does one of three things each time it fires:
+
+- **Messages**: one or more messages, rotated in order or picked at random. Messages support the same `$(...)` variables.
+- **Run a command**: runs one of your commands as if you typed it, so its steps, sounds, and replies all happen. Add up to 10 commands to rotate or pick from at random. It runs as you, so commands limited to mods or subscribers still run; the command's cooldowns and cost do not apply, and a command that is turned off is skipped.
+- **Action steps**: a full step list, edited as a Blueprint or in the form like a command.
+
+Save works with no name filled in: LuckyBot asks for one.
 
 Timers can cycle as a **group**: one member posts per interval, in order or shuffled, instead of every timer firing at once. **Timer spacing** sets a minimum gap between any two timer posts, so timers that share a cadence take turns rather than stampeding chat.
 
@@ -67,7 +85,7 @@ When a command hits a Delay step of 60 seconds or more, the rest of its steps ar
 
 ## Walk Ons
 
-A walk on runs once per viewer per stream, the first time they chat since you went live (not their first message ever). Target one viewer by name, a role like VIPs, a minimum sub tier, or everyone. Steps can do anything a command can: chat a message, run a Twitch shoutout, play a sound or media on an overlay, TTS, and more.
+A walk on runs once per viewer per stream, the first time they chat since you went live (not their first message ever). Target one viewer by name, a role like VIPs, a minimum sub tier, or everyone. When several walk ons match one arrival, only the most specific fires: named viewers beat roles and tiers, which beat catch-alls. Under **What happens**, the steps can do anything a command can: chat a message, run a Twitch shoutout, play a sound or media on an overlay, TTS, and more. They open as a Blueprint, starting from a **Viewer walks on** box, or in the form.
 
 Off by default: leave it off if Streamer.bot or another tool already does walk ons, so nothing fires twice.
 
@@ -79,7 +97,7 @@ Use **Preview a viewer's arrival** to check which walk on would fire for a real 
 
 Counters are named tallies driven from chat: deaths, wins, anything. Presets cover common setups, or build a custom one.
 
-Each counter has up to three bound commands: **view**, **increment**, and **decrement** (for example `!deaths`, `!death`, `!unkill`), each with its own permission level and response using `$(count)`.
+Each counter has up to three bound commands: **view**, **increment**, and **decrement**, each with its own permission level and response using `$(count)`. A new counter fills its commands in from its name: a counter named Deaths gets `!deaths` to view, `!death` to add one, and `!undeath` to take one away, with the reply "Deaths: $(count)". Any of them can be changed by hand. Save works with no name filled in: LuckyBot asks for the name and fills the commands in from it.
 
 **Create overlay** builds a ready-made widget overlay showing the counter, updating live the moment a command runs. Once one exists the button becomes **Open overlay**. Counters are also available to any widget as `{{counter_name}}` variables. See [Widgets](widgets.md).
 
@@ -200,7 +218,7 @@ Patterns that trigger an automatic action when they appear in chat. Each pattern
 
 - **Chat bot enabled**: the master switch.
 - **Command prefix**: the character commands start with (default `!`).
-- **Bot account**: connect a dedicated bot account with a device code: open the shown link in a browser signed in as the bot account and enter the code. Make the bot a moderator in your channel; it raises rate limits and lets the bot run spam filter and banned word actions itself. **Send replies as** then picks your account or the bot account.
+- **Bot account**: connect a dedicated bot account with a device code: open the shown link in a browser signed in as the bot account and enter the code. Make the bot a moderator in your channel; it raises rate limits and lets the bot run spam filter and banned word actions itself. **Send replies as** then picks your account or the bot account. The bot's sign-in renews itself in the background. If Twitch stops accepting it (usually after the bot account's password changed or its connection to LuckyBot was removed on Twitch), the bot account shows **Reconnect needed** with a **Reconnect** button, and replies come from your own account until you reconnect it.
 - **When Streamer.bot is also running**: prefer Streamer.bot and only answer commands it does not have (recommended), pause LuckyBot while Streamer.bot is running, or prefer LuckyBot and answer everything.
 
 Messages the bot sends itself never trigger its own commands, so a reply cannot loop.
