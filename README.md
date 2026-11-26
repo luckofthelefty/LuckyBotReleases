@@ -149,4 +149,4 @@ The full changelog lives on the [Releases](https://github.com/luckofthelefty/Luc
 
 ## License
 
-MIT
+LuckyBot is free to use. Copyright 2026 LuckoftheLefty, all rights reserved. See [LICENSE](LICENSE).
