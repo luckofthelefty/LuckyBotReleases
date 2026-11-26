@@ -165,13 +165,14 @@ Chat windows can also open at startup per channel, under Chat > settings > Popou
 ### App
 
 - **Open data folder**: opens the folder that holds the database, logs, and backups.
+- **Licenses**: opens the folder with LuckyBot's license and the notices for the software it is built with.
 - **Check for updates**: checks now. The app also checks on startup. If a check fails, a short message says why, and the banner at the top of the window has a **Download manually** link to the releases page. LuckyBot retries on its own a little later.
 - **Download updates automatically**: new versions download in the background and install the next time you close LuckyBot. A banner still offers to restart sooner.
 - **Export all overlays**: saves every overlay as a separate `.beacon` file.
 
 ### Privacy
 
-Once a day LuckyBot sends your Twitch name, the app version, and how many overlays, commands, and timers you have. It never sends anything off your PC (real name, location, IP, email, files), your chat, your viewers, your keys, or what your commands and overlays say. **Let the developer know I use LuckyBot** turns this off.
+Once a day LuckyBot sends your Twitch name and ID number, the app version, your operating system, how many overlays, commands, and timers you have, and which features and integrations are turned on. It never sends your real name, location, email, or files, your chat, your viewers, your keys, or what your commands and overlays say. **Let the developer know I use LuckyBot** turns this off.
 
 ### Diagnostics Logs
 
