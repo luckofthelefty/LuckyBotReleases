@@ -97,10 +97,7 @@ Get your JWT token at streamelements.com/dashboard/account/channels (click Show 
 
 See TikTok LIVE chat alongside your Twitch chat (tagged TT in the combined chat) and fire alerts and command triggers on TikTok gifts, follows, subscribes, likes, and shares. Watch only: LuckyBot cannot send TikTok chat or moderate. Events only arrive while the account is live.
 
-Two ways to connect:
-
-- **Through TikFinity (free)**, the default. Install and run TikFinity Desktop and connect it to the TikTok account. LuckyBot reads its local Events API automatically while it runs. No TikTok login is needed in LuckyBot. If you change the connected account in TikFinity, click **Reconnect**.
-- **Direct connection**. Connects straight to TikTok without TikFinity. Enter the **TikTok username**. TikTok requires signed connections and the signing service (Euler Stream) charges for webcast signing, so this mode usually needs a paid **Euler Stream API key**.
+LuckyBot reads TikTok through TikFinity Desktop, which is free. Install and run TikFinity Desktop and connect it to the TikTok account. LuckyBot reads its local Events API automatically while it runs. No TikTok login is needed in LuckyBot. If you change the connected account in TikFinity, click **Reconnect**.
 
 Click **Turn on**. The status line shows Connected, Connecting, or Waiting, plus **Reconnect** and **Turn off** buttons.
 
