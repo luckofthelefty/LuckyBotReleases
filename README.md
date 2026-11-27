@@ -165,4 +165,6 @@ The full changelog lives on the [Releases](https://github.com/luckofthelefty/Luc
 
 ## License
 
-LuckyBot is free to use. Copyright 2026 LuckoftheLefty, all rights reserved. See [LICENSE](LICENSE).
+LuckyBot is free to use. Copyright 2026 LuckoftheLefty, all rights reserved. See the [license](https://github.com/luckofthelefty/LuckyBotReleases/blob/main/LICENSE).
+
+Using LuckyBot is covered by the [Terms of Service](https://luckybot.app/terms.html) and the [Privacy Policy](https://luckybot.app/privacy.html).

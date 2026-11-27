@@ -136,6 +136,8 @@ Only install overlays from people you trust. An Advanced overlay runs its own co
 
 Overlays export as `.beacon` files you can move to another machine or send to someone.
 
+Keys and tokens saved in an overlay's settings, such as the Spotify widget's client secret and sign-in, are left out of exports and share links. Whoever installs the overlay enters their own.
+
 ### Exporting
 
 Click the download icon on the overlay card. The export dialog lets you rename the export and shows who made it and on which version. **Include media files** bundles the images, videos, and audio into the file so the overlay works out of the box on any machine. Without it, the file is small but media has to be re-added after importing elsewhere.
