@@ -166,6 +166,7 @@ Chat windows can also open at startup per channel, under Chat > settings > Popou
 
 - **Open data folder**: opens the folder that holds the database, logs, and backups.
 - **Licenses**: opens the folder with LuckyBot's license and the notices for the software it is built with.
+- **Terms of Service** and **Privacy Policy**: links to both pages on luckybot.app. The Privacy section below links the policy too.
 - **Check for updates**: checks now. The app also checks on startup. If a check fails, a short message says why, and the banner at the top of the window has a **Download manually** link to the releases page. LuckyBot retries on its own a little later.
 - **Download updates automatically**: new versions download in the background and install the next time you close LuckyBot. A banner still offers to restart sooner.
 - **Export all overlays**: saves every overlay as a separate `.beacon` file.
